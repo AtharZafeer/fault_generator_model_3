@@ -27,11 +27,12 @@ module fg_m3_lfsr #(
 parameter ADDRESS_WIDTH = 8,
 parameter NUM_REG = 150
 )
-( input logic fg_clk_i, 
+( 
+input logic fg_clk_i, 
 input logic fg_rst_ni,
-input logic [ADDRESS_WIDTH-1:0] fg_seed, //seed value to initialize when soft reset, 
-input logic fg_en, //enables the address generation for the lfsr when high
-input logic fg_start, // does a soft reset to lfsr when high
+input logic [ADDRESS_WIDTH-1:0] fg_seed,                    //seed value to initialize when soft reset, 
+input logic fg_en,                                         //enables the address generation for the lfsr when high
+input logic fg_start,                                        // does a soft reset to lfsr when high
 output logic [ADDRESS_WIDTH-1:0] fg_lfsr_output
 );
     reg [ADDRESS_WIDTH-1:0] fg_lfsr_reg;
@@ -39,7 +40,7 @@ output logic [ADDRESS_WIDTH-1:0] fg_lfsr_output
         if(~fg_rst_ni) begin 
             fg_lfsr_reg <= '0;
         end
-        else if(fg_start) begin //start bit as to inilized to zero else the lfsr wont run
+        else if(fg_start) begin //start bit as to be inilized to zero else the lfsr wont run
             fg_lfsr_reg <= (fg_seed == '0)?1:fg_seed;
         end
         else if(fg_en) begin //only work when en is high

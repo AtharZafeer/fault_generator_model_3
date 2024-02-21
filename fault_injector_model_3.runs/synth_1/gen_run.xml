@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7vx485tffg1157-1" LaunchTime="1708497575" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/fg_m3_lfsr.dcp">
-  <File Type="VDS-TIMING-PB" Name="fg_m3_fsm_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="fg_m3_fsm_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="fg_m3_fsm.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="fg_m3_fsm_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="fg_m3_fsm_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="fg_m3_fsm_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="fg_m3_fsm.vds"/>
-  <File Type="REPORTS-TCL" Name="fg_m3_fsm_reports.tcl"/>
-  <File Type="PA-TCL" Name="fg_m3_fsm.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7vx485tffg1157-1" LaunchTime="1708503549" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/fg_m3_lfsr.dcp">
+  <File Type="VDS-TIMING-PB" Name="fg_m3_driver_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="fg_m3_driver_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="fg_m3_driver.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="fg_m3_driver_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="fg_m3_driver_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="fg_m3_driver_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="fg_m3_driver.vds"/>
+  <File Type="REPORTS-TCL" Name="fg_m3_driver_reports.tcl"/>
+  <File Type="PA-TCL" Name="fg_m3_driver.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/fg_m3_lfsr.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/fg_m3_driver.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/fg_m3_counter.sv">
       <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/fg_m3_fsm.sv">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/fg_m3_lfsr.sv">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -35,8 +43,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="fg_m3_fsm"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="fg_m3_driver"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">

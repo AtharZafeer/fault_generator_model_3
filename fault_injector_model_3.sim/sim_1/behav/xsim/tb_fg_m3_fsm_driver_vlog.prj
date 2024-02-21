@@ -1,8 +1,11 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib  \
 "../../../../fault_injector_model_3.srcs/sources_1/new/fg_m3_counter.sv" \
+"../../../../fault_injector_model_3.srcs/sources_1/new/fg_m3_driver.sv" \
 "../../../../fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm.sv" \
-"../../../../fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fsm.sv" \
+"../../../../fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv" \
+"../../../../fault_injector_model_3.srcs/sources_1/new/fg_m3_lfsr.sv" \
+"../../../../fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fsm_driver.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

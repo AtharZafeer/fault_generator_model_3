@@ -90,7 +90,7 @@ typedef enum logic [1:0] {
                 next_state = PULSE;    
             end
         end
-    
+        default : next_state = IDLE;
     endcase
     end
     else begin 
