@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Feb 21 06:39:39 2024
+# Process ID: 2251838
+# Current directory: /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1
+# Command line: vivado -log fg_m3_fsm.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_m3_fsm.tcl
+# Log file: /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1/fg_m3_fsm.vds
+# Journal file: /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1/vivado.jou
+# Running On: compute, OS: Linux, CPU Frequency: 1200.000 MHz, CPU Physical cores: 23, Host memory: 135058 MB
+#-----------------------------------------------------------
+source fg_m3_fsm.tcl -notrace
