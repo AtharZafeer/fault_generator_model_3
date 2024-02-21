@@ -40,7 +40,7 @@ fg_m3_fsm_driver dut(
 initial clk_i = 0;
 
 always begin 
-    clk_i = ~clk_i;
+    #1clk_i = ~clk_i;
 end
 
 initial begin 

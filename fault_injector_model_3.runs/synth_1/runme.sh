@@ -37,4 +37,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log fg_m3_driver.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_m3_driver.tcl
+EAStep vivado -log fg_m3_fsm_driver.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_m3_fsm_driver.tcl

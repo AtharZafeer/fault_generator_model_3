@@ -32,7 +32,8 @@ output logic [N_PORTS-1:0] fg_driver_ports
 
 
 module fg_m3_fsm_driver#(
-    parameter N_PORTS = 256
+    parameter N_PORTS = 256,
+    parameter ADDRESS_WIDTH = 8
 )( 
 input logic fg_fsm_driver_clk_i,
 input logic fg_fsm_driver_rst_ni,
@@ -42,11 +43,11 @@ output logic [N_PORTS-1:0] fg_fsm_driver_ports
 );
 
 logic [1:0] fg_fsm_driver_state;
-
+logic [ADDRESS_WIDTH-1:0] fg_driver_fault_address;
 
 fg_m3_fsm fsm_driver_fsm (fg_fsm_driver_clk_i, fg_fsm_driver_rst_ni , fg_fsm_driver_start_op, fg_fsm_driver_state);
 
-fg_m3_driver fsm_driver_driver (fg_fsm_driver_clk_i, fg_fsm_driver_rst_ni, fg_fsm_driver_state, fg_fsm_driver_ports );
+fg_m3_driver fsm_driver_driver (fg_fsm_driver_clk_i, fg_fsm_driver_rst_ni, fg_fsm_driver_state, fg_fsm_driver_ports, fg_driver_fault_address );
 
 
 

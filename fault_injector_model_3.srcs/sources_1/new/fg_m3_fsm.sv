@@ -22,23 +22,32 @@
 
 module fg_m3_fsm #(
     
-    parameter DELAY_CYCLES = 10,
+    parameter DELAY_CYCLES = 5,
     parameter PULSE_WIDTH = 2,
     parameter ADDRESS_WIDTH = 8
 )
 (input logic fg_fsm_clk_i,
 input logic fg_fsm_rst_ni,
 input logic fg_fsm_start_op,
-output logic [1:0] fg_fsm_output
+output logic [1:0] fg_fsm_output,
+output logic [ADDRESS_WIDTH-1:0] fg_fsm_ref_counter
 );
-typedef enum logic [1:0] {
+ 
+ typedef enum logic [1:0] {
     IDLE, DELAY, PULSE
    } fg_state;
+
  fg_state current_state, next_state;   
  
  reg [31:0] fg_fsm_counter_output;
+ 
+ reg [31:0] fg_fsm_ref_counter;
+ 
  logic fg_fsm_count_clear_i;
  logic fg_fsm_count_hold_i;
+ 
+ logic fg_fsm_ref_count_clear_i;
+ logic fg_fsm_ref_count_hold_i;
  
  fg_m3_counter fg_fsm_m3_counter( //instantiate a counter
     fg_fsm_clk_i,
@@ -47,6 +56,15 @@ typedef enum logic [1:0] {
     fg_fsm_count_hold_i,
     fg_fsm_counter_output  //32 bit counter, made it 32 well, hopefully the delay we apply never exceeds this 
     );
+  fg_m3_counter fg_fsm_m3_reference_counter( //instantiate another counter to keep track of the clock cycles from the start of start_op bit high
+    fg_fsm_clk_i,
+    fg_fsm_rst_ni,
+    fg_fsm_ref_count_clear_i,
+    fg_fsm_ref_count_hold_i,
+    fg_fsm_ref_counter  //32 bit counter, made it 32 well, hopefully the delay we apply never exceeds this 
+    );  
+ 
+
  
  always_ff@(posedge fg_fsm_clk_i or negedge fg_fsm_rst_ni) begin 
     if(~fg_fsm_rst_ni) begin 
@@ -64,7 +82,7 @@ typedef enum logic [1:0] {
             if(fg_fsm_counter_output != DELAY_CYCLES)
             begin
                 fg_fsm_count_clear_i = '0;
-                fg_fsm_count_hold_i <='0;
+                fg_fsm_count_hold_i ='0;
                 next_state = IDLE;
             end
             else begin 
@@ -94,10 +112,25 @@ typedef enum logic [1:0] {
     endcase
     end
     else begin 
-       fg_fsm_count_hold_i = 0; 
+       fg_fsm_count_hold_i = '0; 
        fg_fsm_count_clear_i = '1;
     end
  
   end
  assign fg_fsm_output = current_state;
+ 
+ always_comb begin  //block that controls reference counter which gives us the number of clock cycles after the fault injector has started
+    if(fg_fsm_start_op) begin 
+        fg_fsm_ref_count_clear_i = '0;
+        fg_fsm_ref_count_hold_i =  '0;
+    end
+    else begin 
+        fg_fsm_ref_count_clear_i = '1;
+        fg_fsm_ref_count_hold_i =  '0;
+        
+    end
+ 
+ end
+ 
+ 
 endmodule
