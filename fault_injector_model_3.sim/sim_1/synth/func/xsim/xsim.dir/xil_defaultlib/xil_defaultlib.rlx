@@ -2,8 +2,9 @@
 2020.2
 Oct 13 2023
 20:21:30
-/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.sim/sim_1/synth/func/xsim/tb_fg_m3_fsm_driver_func_synth.v,1708552918,verilog,,,,fg_m3_counter;fg_m3_driver;fg_m3_fsm;fg_m3_fsm_driver;fg_m3_lfsr;glbl,,uvm,,,,,,
+/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.sim/sim_1/synth/func/xsim/tb_fg_m3_fifo_func_synth.v,1708582077,verilog,,,,fg_m3_fifo;glbl,,uvm,,,,,,
 /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_driver.sv,1708503078,systemVerilog,,,,tb_fg_m3_driver,,uvm,,,,,,
+/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fifo.sv,1708577597,systemVerilog,,,,tb_fg_m3_fifo,,uvm,,,,,,
 /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fsm.sv,1708497505,systemVerilog,,,,tb_fg_m3_fsm,,uvm,,,,,,
 /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fsm_driver.sv,1708505175,systemVerilog,,,,tb_fg_m3_fsm_driver,,uvm,,,,,,
 /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_lfsr.sv,1708489979,systemVerilog,,,,tb_fg_m3_lfsr,,uvm,,,,,,

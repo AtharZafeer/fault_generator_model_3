@@ -1,9 +1,9 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"tb_fg_m3_fsm_driver_func_synth.v" \
+"tb_fg_m3_fifo_func_synth.v" \
 
 sv xil_defaultlib  \
-"../../../../../fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fsm_driver.sv" \
+"../../../../../fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fifo.sv" \
 
 # Do not sort compile order
 nosort

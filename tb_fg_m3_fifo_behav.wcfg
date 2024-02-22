@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_fg_m3_fifo_func_synth.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_fg_m3_fifo" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="304.530 ns"></ZoomStartTime>
+      <ZoomEndTime time="321.371 ns"></ZoomEndTime>
+      <Cursor1Time time="311.538 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="147"></NameColumnWidth>
+      <ValueColumnWidth column_width="225"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="11" />
+   <wvobject type="logic" fp_name="/tb_fg_m3_fifo/fg_fifo_clk_i">
+      <obj_property name="ElementShortName">fg_fifo_clk_i</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_clk_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_fg_m3_fifo/fg_fifo_rst_ni">
+      <obj_property name="ElementShortName">fg_fifo_rst_ni</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_rst_ni</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_fg_m3_fifo/fg_fifo_data_i">
+      <obj_property name="ElementShortName">fg_fifo_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_data_i[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_fg_m3_fifo/fg_fifo_data_o">
+      <obj_property name="ElementShortName">fg_fifo_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_data_o[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_fg_m3_fifo/DUT/buffer">
+      <obj_property name="ElementShortName">buffer[31:0]</obj_property>
+      <obj_property name="ObjectShortName">buffer[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_fg_m3_fifo/fg_fifo_ready_i">
+      <obj_property name="ElementShortName">fg_fifo_ready_i</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_ready_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_fg_m3_fifo/fg_fifo_valid_i">
+      <obj_property name="ElementShortName">fg_fifo_valid_i</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_valid_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_fg_m3_fifo/fg_fifo_valid_o">
+      <obj_property name="ElementShortName">fg_fifo_valid_o</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_valid_o</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_fg_m3_fifo/fg_fifo_ready_o">
+      <obj_property name="ElementShortName">fg_fifo_ready_o</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_ready_o</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_fg_m3_fifo/DATA_WIDTH">
+      <obj_property name="ElementShortName">DATA_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">DATA_WIDTH[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_fg_m3_fifo/BUFFER_DEPTH">
+      <obj_property name="ElementShortName">BUFFER_DEPTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BUFFER_DEPTH[31:0]</obj_property>
+   </wvobject>
+</wave_config>

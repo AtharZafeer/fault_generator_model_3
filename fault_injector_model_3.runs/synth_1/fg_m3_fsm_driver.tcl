@@ -71,7 +71,10 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param simulator.questaInstallPath /cad/mentor/questasim_2019.4/questasim/bin
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_msg_config -id {Common 17-41} -limit 10000000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7vx485tffg1157-1
 
@@ -89,6 +92,7 @@ OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_counter.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_driver.sv
+  /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fifo.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_lfsr.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv
@@ -104,7 +108,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/utils_1/imports/synth_1/fg_m3_lfsr.dcp
+read_checkpoint -auto_incremental -incremental /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/utils_1/imports/synth_1/fg_m3_fifo.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

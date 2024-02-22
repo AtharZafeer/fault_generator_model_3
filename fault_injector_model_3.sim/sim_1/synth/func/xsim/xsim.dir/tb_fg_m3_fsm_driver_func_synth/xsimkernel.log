@@ -2,3 +2,6 @@ Running: xsim.dir/tb_fg_m3_fsm_driver_func_synth/xsimk -simmode gui -wdb tb_fg_m
 Design successfully loaded
 Design Loading Memory Usage: 28308 KB (Peak: 28308 KB)
 Design Loading CPU Usage: 210 ms
+Simulation completed
+Simulation Memory Usage: 110564 KB (Peak: 167576 KB)
+Simulation CPU Usage: 550 ms

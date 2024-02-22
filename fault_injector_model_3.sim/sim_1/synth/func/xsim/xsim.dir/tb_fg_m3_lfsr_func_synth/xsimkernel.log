@@ -2,3 +2,6 @@ Running: xsim.dir/tb_fg_m3_lfsr_func_synth/xsimk -simmode gui -wdb tb_fg_m3_lfsr
 Design successfully loaded
 Design Loading Memory Usage: 23828 KB (Peak: 24228 KB)
 Design Loading CPU Usage: 110 ms
+Simulation completed
+Simulation Memory Usage: 106084 KB (Peak: 163096 KB)
+Simulation CPU Usage: 160 ms

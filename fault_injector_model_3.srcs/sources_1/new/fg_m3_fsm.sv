@@ -23,14 +23,14 @@
 module fg_m3_fsm #(
     
     parameter DELAY_CYCLES = 5,
-    parameter PULSE_WIDTH = 2,
+    parameter PULSE_WIDTH = 1,
     parameter ADDRESS_WIDTH = 8
 )
 (input logic fg_fsm_clk_i,
 input logic fg_fsm_rst_ni,
 input logic fg_fsm_start_op,
 output logic [1:0] fg_fsm_output,
-output logic [ADDRESS_WIDTH-1:0] fg_fsm_ref_counter
+output logic [31:0] fg_fsm_ref_counter
 );
  
  typedef enum logic [1:0] {

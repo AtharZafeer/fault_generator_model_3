@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Wed Feb 21 22:01:23 2024
+| Date         : Thu Feb 22 07:48:20 2024
 | Host         : compute running 64-bit Ubuntu 22.04.1 LTS
 | Command      : report_utilization -file fg_m3_fsm_driver_utilization_synth.rpt -pb fg_m3_fsm_driver_utilization_synth.pb
 | Design       : fg_m3_fsm_driver
@@ -31,8 +31,8 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |  234 |     0 |          0 |    303600 |  0.08 |
-|   LUT as Logic          |  234 |     0 |          0 |    303600 |  0.08 |
+| Slice LUTs*             |  237 |     0 |          0 |    303600 |  0.08 |
+|   LUT as Logic          |  237 |     0 |          0 |    303600 |  0.08 |
 |   LUT as Memory         |    0 |     0 |          0 |    130800 |  0.00 |
 | Slice Registers         |  321 |     0 |          0 |    607200 |  0.05 |
 |   Register as Flip Flop |   43 |     0 |          0 |    607200 | <0.01 |
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |  259 |     0 |          0 |       600 | 43.17 |
+| Bonded IOB                  |  299 |     0 |          0 |       600 | 49.83 |
 | Bonded IPADs                |    0 |     0 |          0 |        62 |  0.00 |
 | Bonded OPADs                |    0 |     0 |          0 |        40 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |        14 |  0.00 |
@@ -153,14 +153,14 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
+| OBUF     |  296 |                  IO |
 | LDCE     |  277 |        Flop & Latch |
 | LUT4     |  275 |                 LUT |
-| OBUF     |  256 |                  IO |
-| LUT2     |   44 |                 LUT |
+| LUT2     |   45 |                 LUT |
+| LUT6     |   43 |                 LUT |
 | FDCE     |   42 |        Flop & Latch |
-| LUT6     |   41 |                 LUT |
 | LUT5     |   25 |                 LUT |
-| LUT3     |   11 |                 LUT |
+| LUT3     |   10 |                 LUT |
 | CARRY4   |    8 |          CarryLogic |
 | LUT1     |    3 |                 LUT |
 | IBUF     |    3 |                  IO |
