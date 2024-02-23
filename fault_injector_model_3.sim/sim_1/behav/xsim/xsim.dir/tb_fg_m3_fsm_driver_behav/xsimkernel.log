@@ -1,4 +1,4 @@
-Running: xsim.dir/tb_fg_m3_fsm_driver_behav/xsimk -simmode gui -wdb tb_fg_m3_fsm_driver_behav.wdb -simrunnum 0 -socket 35953
+Running: xsim.dir/tb_fg_m3_fsm_driver_behav/xsimk -simmode gui -wdb tb_fg_m3_fsm_driver_behav.wdb -simrunnum 0 -socket 52965
 Design successfully loaded
-Design Loading Memory Usage: 23588 KB (Peak: 24172 KB)
-Design Loading CPU Usage: 210 ms
+Design Loading Memory Usage: 23572 KB (Peak: 24168 KB)
+Design Loading CPU Usage: 240 ms

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Thu Feb 22 07:48:20 2024
+| Date         : Thu Feb 22 17:13:50 2024
 | Host         : compute running 64-bit Ubuntu 22.04.1 LTS
 | Command      : report_utilization -file fg_m3_fsm_driver_utilization_synth.rpt -pb fg_m3_fsm_driver_utilization_synth.pb
 | Design       : fg_m3_fsm_driver
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |  299 |     0 |          0 |       600 | 49.83 |
+| Bonded IOB                  |  259 |     0 |          0 |       600 | 43.17 |
 | Bonded IPADs                |    0 |     0 |          0 |        62 |  0.00 |
 | Bonded OPADs                |    0 |     0 |          0 |        40 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |        14 |  0.00 |
@@ -153,9 +153,9 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUF     |  296 |                  IO |
 | LDCE     |  277 |        Flop & Latch |
 | LUT4     |  275 |                 LUT |
+| OBUF     |  256 |                  IO |
 | LUT2     |   45 |                 LUT |
 | LUT6     |   43 |                 LUT |
 | FDCE     |   42 |        Flop & Latch |

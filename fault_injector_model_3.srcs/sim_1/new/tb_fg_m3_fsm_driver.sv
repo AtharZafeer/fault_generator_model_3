@@ -21,17 +21,13 @@
 
 
 module tb_fg_m3_fsm_driver();
-parameter N_PORTS = 256;
-parameter COUNTER_WIDTH = 32;
-parameter ADDRESS_WIDTH = 8;
-    //parameter DATA_WIDTH = 32,
-parameter BUFFER_DEPTH = 32;
+
 
 logic clk_i;
 logic rst_ni;
 logic start_op;
 
-logic [COUNTER_WIDTH-1:0] fsm_driver_timing_data_o,
+logic [COUNTER_WIDTH-1:0] fsm_driver_timing_data_o;
 logic [ADDRESS_WIDTH-1:0] fsm_driver_data_o;
 
 logic [N_PORTS-1:0] driver_ports;
@@ -41,9 +37,8 @@ fg_m3_fsm_driver dut(
     clk_i,
     rst_ni,
     start_op,
-    driver_ports,
-    fsm_driver_timing_data_o,
-    fsm_driver_data_o
+    driver_ports
+    
 );
 
 initial clk_i = 0;

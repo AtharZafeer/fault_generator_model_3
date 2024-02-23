@@ -19,16 +19,17 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
+`include "fg_params.svh"
 
-module fg_m3_counter(
+module fg_m3_counter #()(
 input logic fg_count_clk_i,
 input logic fg_count_rst_ni,
 input logic fg_count_clear_i,
 input logic fg_count_hold_i,
-output logic [31:0] fg_count_output  //32 bit counter, made it 32 well, hopefully the delay we apply never exceeds this 
+output logic [COUNTER_WIDTH-1:0] fg_count_output  //32 bit counter, made it 32 well, hopefully the delay we apply never exceeds this 
     );
     
-    reg [31:0] fg_count_reg;
+    reg [COUNTER_WIDTH-1:0] fg_count_reg;
     
     always_ff@(posedge fg_count_clk_i or negedge fg_count_rst_ni) begin 
         if(~fg_count_rst_ni) fg_count_reg <= '0;

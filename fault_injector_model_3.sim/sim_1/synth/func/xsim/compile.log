@@ -1,3 +1,9 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.sim/sim_1/synth/func/xsim/tb_fg_m3_fifo_func_synth.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module fg_m3_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.sim/sim_1/synth/func/xsim/tb_fg_m3_fsm_driver_func_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fg_m3_counter
+INFO: [VRFC 10-311] analyzing module fg_m3_driver
+INFO: [VRFC 10-311] analyzing module fg_m3_fsm
+INFO: [VRFC 10-311] analyzing module fg_m3_fsm_driver
+INFO: [VRFC 10-311] analyzing module fg_m3_lfsr
 INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sim_1/new/tb_fg_m3_fsm_driver.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_fg_m3_fsm_driver

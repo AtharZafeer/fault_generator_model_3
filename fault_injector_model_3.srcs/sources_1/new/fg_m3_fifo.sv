@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fg_m3_fifo #(
+module fg_m3_fifo /* #(
     parameter DATA_WIDTH = 32,
     parameter BUFFER_DEPTH = 32
-)(
+)*/(
    input  logic                  fg_fifo_clk_i,
    input  logic                  fg_fifo_rst_ni,
    

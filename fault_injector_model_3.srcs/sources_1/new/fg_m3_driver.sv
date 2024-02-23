@@ -26,10 +26,7 @@
 
 
 module fg_m3_driver
-#(
-    parameter N_PORTS = 256,
-    parameter ADDRESS_WIDTH = 8
-)
+
 (
 input logic fg_driver_clk_i,
 input logic fg_driver_rst_ni,

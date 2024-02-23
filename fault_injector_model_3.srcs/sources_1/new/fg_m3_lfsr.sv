@@ -21,12 +21,9 @@
 // enable bit starts the generation of the seed value
 //////////////////////////////////////////////////////////////////////////////////
 
+//`include "fg_params.svh"
 
-
-module fg_m3_lfsr #( 
-parameter ADDRESS_WIDTH = 8,
-parameter NUM_REG = 150
-)
+module fg_m3_lfsr 
 ( 
 input logic fg_clk_i, 
 input logic fg_rst_ni,
@@ -50,6 +47,6 @@ output logic [ADDRESS_WIDTH-1:0] fg_lfsr_output
             
     end
     
-    assign fg_lfsr_output = (fg_lfsr_reg <= NUM_REG)? fg_lfsr_reg: (fg_lfsr_reg)%NUM_REG;
+    assign fg_lfsr_output = (fg_lfsr_reg <= REG_COUNT)? fg_lfsr_reg: (fg_lfsr_reg)%REG_COUNT;
 
 endmodule

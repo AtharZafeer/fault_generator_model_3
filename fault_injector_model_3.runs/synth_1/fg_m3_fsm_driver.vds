@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Thu Feb 22 07:47:21 2024
-# Process ID: 3246126
+# Start of session at: Thu Feb 22 17:12:38 2024
+# Process ID: 3643996
 # Current directory: /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1
 # Command line: vivado -log fg_m3_fsm_driver.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_m3_fsm_driver.tcl
 # Log file: /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1/fg_m3_fsm_driver.vds
@@ -12,7 +12,7 @@
 # Running On: compute, OS: Linux, CPU Frequency: 1200.000 MHz, CPU Physical cores: 24, Host memory: 135058 MB
 #-----------------------------------------------------------
 source fg_m3_fsm_driver.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1337.051 ; gain = 19.867 ; free physical = 29932 ; free virtual = 70815
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1336.238 ; gain = 36.836 ; free physical = 26999 ; free virtual = 68485
 Command: read_checkpoint -auto_incremental -incremental /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/utils_1/imports/synth_1/fg_m3_fifo.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/utils_1/imports/synth_1/fg_m3_fifo.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,13 +25,11 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 3246375
+INFO: [Synth 8-7075] Helper process launched with PID 3644349
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1768.820 ; gain = 409.684 ; free physical = 29229 ; free virtual = 70112
+Starting Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1768.977 ; gain = 408.684 ; free physical = 26306 ; free virtual = 67793
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-11121] redeclaration of ANSI port 'fg_fsm_ref_counter' is not allowed [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm.sv:44]
-WARNING: [Synth 8-11121] redeclaration of ANSI port 'fsm_driver_data_o' is not allowed [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv:53]
-WARNING: [Synth 8-11121] redeclaration of ANSI port 'fsm_driver_timing_data_o' is not allowed [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv:55]
 INFO: [Synth 8-6157] synthesizing module 'fg_m3_fsm_driver' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv:25]
 INFO: [Synth 8-6157] synthesizing module 'fg_m3_fsm' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm.sv:23]
 INFO: [Synth 8-6157] synthesizing module 'fg_m3_counter' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_counter.sv:23]
@@ -123,21 +121,19 @@ WARNING: [Synth 8-7137] Register buffer_reg[3] in module fg_m3_fifo__parameteriz
 WARNING: [Synth 8-7137] Register buffer_reg[2] in module fg_m3_fifo__parameterized0 has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fifo.sv:53]
 WARNING: [Synth 8-7137] Register buffer_reg[1] in module fg_m3_fifo__parameterized0 has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fifo.sv:53]
 WARNING: [Synth 8-7137] Register buffer_reg[0] in module fg_m3_fifo__parameterized0 has both Set and reset with same priority. This may cause simulation mismatches. Consider rewriting code  [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fifo.sv:53]
-WARNING: [Synth 8-87] always_comb on 'fsm_driver_data_i_reg' did not result in combinational logic [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv:69]
-WARNING: [Synth 8-87] always_comb on 'fsm_driver_timing_data_i_reg' did not result in combinational logic [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv:80]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1874.758 ; gain = 515.621 ; free physical = 29100 ; free virtual = 69985
+Finished Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1873.945 ; gain = 513.652 ; free physical = 26177 ; free virtual = 67664
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1892.570 ; gain = 533.434 ; free physical = 29097 ; free virtual = 69981
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1891.758 ; gain = 531.465 ; free physical = 26176 ; free virtual = 67663
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7vx485tffg1157-1
-INFO: [Device 21-403] Loading part xc7vx485tffg1157-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1900.574 ; gain = 541.438 ; free physical = 29097 ; free virtual = 69981
+INFO: [Device 21-403] Loading part xc7vx485tffg1157-1
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1899.762 ; gain = 539.469 ; free physical = 26175 ; free virtual = 67663
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'fg_m3_fsm'
 WARNING: [Synth 8-327] inferring latch for variable 'FSM_sequential_next_state_reg' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm.sv:86]
@@ -159,10 +155,8 @@ WARNING: [Synth 8-327] inferring latch for variable 'fg_driver_lfsr_hold_address
 WARNING: [Synth 8-327] inferring latch for variable 'fg_seed_reg' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_driver.sv:45]
 WARNING: [Synth 8-327] inferring latch for variable 'fg_driver_lfsr_en_reg' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_driver.sv:45]
 WARNING: [Synth 8-327] inferring latch for variable 'fg_driver_lfsr_start_reg' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_driver.sv:45]
-WARNING: [Synth 8-327] inferring latch for variable 'fsm_driver_timing_data_i_reg' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv:80]
-WARNING: [Synth 8-327] inferring latch for variable 'fsm_driver_data_i_reg' [/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv:69]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:11 . Memory (MB): peak = 1951.840 ; gain = 592.703 ; free physical = 29034 ; free virtual = 69919
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:12 . Memory (MB): peak = 1950.129 ; gain = 589.836 ; free physical = 26092 ; free virtual = 67599
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
@@ -176,20 +170,21 @@ Detailed RTL Component Info :
 +---XORs : 
 	   5 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               32 Bit    Registers := 35    
-	                8 Bit    Registers := 34    
+	               32 Bit    Registers := 36    
+	                8 Bit    Registers := 35    
 	                6 Bit    Registers := 2     
 	                5 Bit    Registers := 4     
+	                1 Bit    Registers := 2     
 +---Muxes : 
 	   4 Input  256 Bit        Muxes := 1     
-	   2 Input   32 Bit        Muxes := 105   
-	   2 Input    8 Bit        Muxes := 106   
+	   2 Input   32 Bit        Muxes := 106   
+	   2 Input    8 Bit        Muxes := 107   
 	 259 Input    8 Bit        Muxes := 1     
 	   4 Input    8 Bit        Muxes := 1     
 	   3 Input    3 Bit        Muxes := 1     
 	   2 Input    3 Bit        Muxes := 3     
-	   2 Input    1 Bit        Muxes := 454   
-	   3 Input    1 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 455   
+	   3 Input    1 Bit        Muxes := 4     
 	   4 Input    1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -217,61 +212,21 @@ WARNING: [Synth 8-3332] Sequential element (fsm_driver_driver/fg_driver_fault_ad
 WARNING: [Synth 8-3332] Sequential element (fsm_driver_driver/fg_driver_fault_address_reg[1]) is unused and will be removed from module fg_m3_fsm_driver.
 WARNING: [Synth 8-3332] Sequential element (fsm_driver_driver/fg_driver_fault_address_reg[0]) is unused and will be removed from module fg_m3_fsm_driver.
 WARNING: [Synth 8-3332] Sequential element (fsm_driver_driver/fg_driver_lfsr_start_reg) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[31]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[30]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[29]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[28]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[27]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[26]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[25]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[24]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[23]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[22]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[21]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[20]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[19]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[18]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[17]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[16]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[15]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[14]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[13]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[12]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[11]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[10]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[9]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[8]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[7]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[6]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[5]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[4]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[3]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[2]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[1]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_timing_data_i_reg[0]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[7]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[6]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[5]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[4]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[3]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[2]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[1]) is unused and will be removed from module fg_m3_fsm_driver.
-WARNING: [Synth 8-3332] Sequential element (fsm_driver_data_i_reg[0]) is unused and will be removed from module fg_m3_fsm_driver.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28769 ; free virtual = 69662
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:26 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25816 ; free virtual = 67312
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28770 ; free virtual = 69662
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:26 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25816 ; free virtual = 67312
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:25 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28770 ; free virtual = 69662
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:26 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25816 ; free virtual = 67312
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -289,37 +244,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28761 ; free virtual = 69660
+Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28761 ; free virtual = 69660
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28761 ; free virtual = 69660
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28761 ; free virtual = 69660
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28761 ; free virtual = 69660
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28761 ; free virtual = 69660
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -348,45 +303,45 @@ Report Cell Usage:
 |11    |LD     |   277|
 |12    |LDP    |     1|
 |13    |IBUF   |     3|
-|14    |OBUF   |   296|
+|14    |OBUF   |   256|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+----------------------+--------------+------+
 |      |Instance              |Module        |Cells |
 +------+----------------------+--------------+------+
-|1     |top                   |              |  1032|
+|1     |top                   |              |   992|
 |2     |  fsm_driver_driver   |fg_m3_driver  |   593|
 |3     |    address_generator |fg_m3_lfsr    |   317|
 |4     |  fsm_driver_fsm      |fg_m3_fsm     |   136|
 |5     |    fg_fsm_m3_counter |fg_m3_counter |   112|
 +------+----------------------+--------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28761 ; free virtual = 69660
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 141 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.457 ; gain = 866.320 ; free physical = 28760 ; free virtual = 69659
-Synthesis Optimization Complete : Time (s): cpu = 00:00:30 ; elapsed = 00:00:29 . Memory (MB): peak = 2225.465 ; gain = 866.320 ; free physical = 28760 ; free virtual = 69659
+Synthesis finished with 0 errors, 0 critical warnings and 95 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.801 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 2218.809 ; gain = 858.508 ; free physical = 25819 ; free virtual = 67315
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2225.465 ; gain = 0.000 ; free physical = 29047 ; free virtual = 69946
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2218.809 ; gain = 0.000 ; free physical = 26103 ; free virtual = 67598
 INFO: [Netlist 29-17] Analyzing 286 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2321.297 ; gain = 0.000 ; free physical = 29030 ; free virtual = 69929
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2322.641 ; gain = 0.000 ; free physical = 26077 ; free virtual = 67573
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 278 instances were transformed.
   LD => LDCE: 277 instances
   LDP => LDPE: 1 instance 
 
-Synth Design complete | Checksum: 5ecd497
+Synth Design complete | Checksum: ea7668f4
 INFO: [Common 17-83] Releasing license: Synthesis
-33 Infos, 141 Warnings, 0 Critical Warnings and 0 Errors encountered.
+33 Infos, 95 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 2321.332 ; gain = 981.312 ; free physical = 29029 ; free virtual = 69928
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1734.171; main = 1504.242; forked = 357.989
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3147.973; main = 2321.301; forked = 982.535
-Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2345.309 ; gain = 0.000 ; free physical = 29029 ; free virtual = 69928
+synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:45 . Memory (MB): peak = 2322.676 ; gain = 982.469 ; free physical = 26076 ; free virtual = 67572
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1809.752; main = 1506.131; forked = 358.483
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3201.336; main = 2322.645; forked = 982.531
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2346.652 ; gain = 0.000 ; free physical = 26076 ; free virtual = 67573
 INFO: [Common 17-1381] The checkpoint '/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1/fg_m3_fsm_driver.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file fg_m3_fsm_driver_utilization_synth.rpt -pb fg_m3_fsm_driver_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Feb 22 07:48:20 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu Feb 22 17:13:50 2024...
