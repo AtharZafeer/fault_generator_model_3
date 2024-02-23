@@ -16,4 +16,5 @@ parameter DATA_WIDTH = 32;
 
 parameter REG_COUNT = 140;
 
+parameter DEFAULT_DELAY_CYCLES = 10;
 `endif

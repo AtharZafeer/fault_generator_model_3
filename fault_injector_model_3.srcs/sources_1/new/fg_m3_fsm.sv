@@ -20,15 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fg_m3_fsm #(
-    
-    parameter DELAY_CYCLES = 5,
-    parameter PULSE_WIDTH = 1
-    //parameter ADDRESS_WIDTH = 8
-)
+module fg_m3_fsm 
 (input logic fg_fsm_clk_i,
 input logic fg_fsm_rst_ni,
 input logic fg_fsm_start_op,
+input logic [31:0] fg_fsm_DELAY_CYCLES,
+input logic [31:0] fg_fsm_PULSE_WIDTH,
 output logic [1:0] fg_fsm_output,
 output logic [COUNTER_WIDTH-1:0] fg_fsm_ref_counter
 );
@@ -41,7 +38,7 @@ output logic [COUNTER_WIDTH-1:0] fg_fsm_ref_counter
  
  reg [COUNTER_WIDTH-1:0] fg_fsm_counter_output;
  
- reg [COUNTER_WIDTH-11:0] fg_fsm_ref_counter;
+ //reg [COUNTER_WIDTH-11:0] fg_fsm_ref_counter;
  
  logic fg_fsm_count_clear_i;
  logic fg_fsm_count_hold_i;
@@ -79,7 +76,7 @@ output logic [COUNTER_WIDTH-1:0] fg_fsm_ref_counter
     if(fg_fsm_start_op) begin 
     case(current_state) 
         IDLE: begin 
-            if(fg_fsm_counter_output != DELAY_CYCLES)
+            if(fg_fsm_counter_output != fg_fsm_DELAY_CYCLES)
             begin
                 fg_fsm_count_clear_i = '0;
                 fg_fsm_count_hold_i ='0;
@@ -90,7 +87,7 @@ output logic [COUNTER_WIDTH-1:0] fg_fsm_ref_counter
             end
         end
         DELAY: begin 
-            if(fg_fsm_counter_output <= (DELAY_CYCLES + PULSE_WIDTH)) begin 
+            if(fg_fsm_counter_output <= (fg_fsm_DELAY_CYCLES + fg_fsm_PULSE_WIDTH)) begin 
                 next_state = PULSE;
                 fg_fsm_count_hold_i <= '1;
             end
@@ -99,7 +96,7 @@ output logic [COUNTER_WIDTH-1:0] fg_fsm_ref_counter
             end
         end
         PULSE: begin 
-            if(fg_fsm_counter_output == (DELAY_CYCLES + PULSE_WIDTH) )begin   
+            if(fg_fsm_counter_output == (fg_fsm_DELAY_CYCLES + fg_fsm_PULSE_WIDTH) )begin   
                 fg_fsm_count_clear_i = '1;
                 next_state = IDLE;
             end

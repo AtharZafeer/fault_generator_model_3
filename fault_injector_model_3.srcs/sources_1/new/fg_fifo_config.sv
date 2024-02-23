@@ -95,12 +95,15 @@ output logic [ADDRESS_WIDTH-1:0] fg_driver_fault_address
 
 */
 
+`include "fg_params.svh"
+
+
 module fg_fifo_config(
 input logic fg_fifo_config_clk_i,  //this will be PCLK
 input logic fg_fifo_config_rst_ni,  //this will be PRESETn
 input logic [31:0] PADDR,
 input logic PSEL,
-input logic PENABLE, // this will PENABLE
+input logic PENABLE, // 
 input logic PWRITE,
 input logic [31:0] PWDATA,
 output logic PREADY,
@@ -109,7 +112,14 @@ output logic PSLAVEERR,
 
 output logic [N_PORTS-1:0] fg_fifo_config_driver_ports
  );
-    
+
+
+
+logic [31:0] fg_delay_cycles;
+logic [31:0] fg_pulse_width;
+logic fg_fifo_config_start_op;
+
+logic [ADDRESS_WIDTH-1:0] fg_seed_value;    
 
 
 logic [1:0] fg_fifo_config_fsm_state;
@@ -117,17 +127,11 @@ logic [COUNTER_WIDTH-1:0] fg_fifo_config_ref_counter;
 logic [ADDRESS_WIDTH-1:0] fg_fifo_config_fault_address;
 
 
-// add logic for delay cycles and pulse width
-fg_m3_fsm_driver fg_fifo_config_fsm_driver(
-fg_fifo_config_clk_i, 
-fg_fifo_config_rst_ni, 
-fg_config_start_op, 
-fg_fifo_config_driver_ports,
-fg_fifo_config_fsm_state,
-fg_fifo_config_ref_counter,
-fg_fifo_config_fault_address);
 
-logic fg_fifo_config_valid_i, fg_fifo_config_ready_i;  //this will be same for both fifos
+logic fg_fifo_config_address_valid_i, fg_fifo_config_address_ready_i;  //valid_i and ready_i for address storing fifo
+
+logic fg_fifo_config_timing_valid_i, fg_fifo_config_timing_ready_i;  //valid_i and ready_i for address storing fifo
+
 
 logic fg_fifo_config_address_valid_o, fg_fifo_config_address_ready_o; //this will be used for address fifo
 
@@ -137,13 +141,175 @@ logic [ADDRESS_WIDTH-1:0] fg_fifo_config_address_data_i, fg_fifo_config_address_
 
 logic [COUNTER_WIDTH-1:0] fg_fifo_config_timing_data_i, fg_fifo_config_timing_data_o; // in and out wires for fifo that stores counter values
 
+logic fg_en_delay_cycles, fg_en_pulse_width, fg_en_start_op, fg_en_read_address_fifo, fg_en_read_timer_fifo, fg_en_seed_value;
+
+
+
+//this block stores the fault address and timer into their respective fifo registers
+always_comb begin 
+    //check if it is pulse state and the both the fifos are not full
+    if(fg_fifo_config_fsm_state == 2'b10 && fg_fifo_config_address_ready_o == 1 && fg_fifo_config_timing_ready_o == 1) begin 
+        //make sure  no same address is stored into the fifos (problem: when the pulse width is more than 1 clock cycle, it samples the same address twice: SOl:
+        if(fg_fifo_config_address_data_i == fg_fifo_config_fault_address && fg_fifo_config_timing_data_i == fg_fifo_config_ref_counter)begin 
+            fg_fifo_config_timing_valid_i <= 0;
+            fg_fifo_config_address_valid_i <= 0;
+        end
+        else begin 
+            fg_fifo_config_timing_valid_i <= 1;
+            fg_fifo_config_address_valid_i <= 1;
+            fg_fifo_config_address_data_i <= fg_fifo_config_fault_address;
+            fg_fifo_config_timing_data_i <= fg_fifo_config_ref_counter;
+        end
+    end
+    else begin 
+        fg_fifo_config_address_data_i <= 0;
+        fg_fifo_config_timing_data_i <= 0;
+        fg_fifo_config_address_valid_i <= 0;
+        fg_fifo_config_timing_valid_i <= 0;
+        
+    end
+
+end
+
+
+//registers that config the fault generator
+
+//for reading delay cycles from apb bus
+always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
+    if(~fg_fifo_config_rst_ni) begin 
+       fg_delay_cycles <= '0;
+    end
+    else if(fg_en_delay_cycles && PWRITE &&  PENABLE) begin 
+        fg_delay_cycles <= (PWDATA)? PWDATA: DEFAULT_DELAY_CYCLES; //if pwdata is zero, give the default delay value (declared in fg_params.svh)
+    end
+end
+
+// to enable Fault injector and this is done using APB bus
+always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
+    if(~fg_fifo_config_rst_ni) begin 
+       fg_fifo_config_start_op <= '0;
+    end
+    else if(fg_en_start_op && PWRITE &&  PENABLE) begin 
+        fg_fifo_config_start_op <= PWDATA[0];
+    end
+end
+
+// Read duration of the fault from apb bus, this duration can be modified to behave like a stuck at fault depending on how many cycles it takes for the required operation to rerun
+always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
+    if(~fg_fifo_config_rst_ni) begin 
+       fg_pulse_width <= '0;
+    end
+    else if(fg_en_pulse_width && PWRITE &&  PENABLE) begin 
+        fg_pulse_width <= PWDATA[0];
+    end
+end
+
+
+//register to enable writing the fault addresses to the apb bus
+//the only way to clear the fifo is either using reset_n or if the data is read
+always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
+    if(~fg_fifo_config_rst_ni) begin 
+       PRDATA <= '0;
+    end
+    else begin 
+        if(fg_en_read_address_fifo && !PWRITE &&  PENABLE) begin 
+        //add fifo read logic here
+            fg_fifo_config_address_ready_i <= 1;
+            PRDATA <= (fg_fifo_config_address_data_o)? fg_fifo_config_address_data_o: '0;
+        end
+        else fg_fifo_config_address_ready_i <= 0;
+    end    
+end
+
+
+//register to enable writing timer of the said fault to the apb bus
+always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
+    if(~fg_fifo_config_rst_ni) begin 
+       PRDATA <= '0;
+    end
+    else begin 
+        if(fg_en_read_address_fifo && !PWRITE &&  PENABLE) begin 
+        //add timer fifo read logic here
+            fg_fifo_config_timing_ready_i <= 1;
+            PRDATA <= (fg_fifo_config_timing_data_o)? fg_fifo_config_timing_data_o: '0;
+        end
+        else fg_fifo_config_timing_ready_i <= 0;
+    end
+end
+
+//register to give the input of seed value to the lfsr, else it'll take a value called 31'h1 as default value
+always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
+    if(~fg_fifo_config_rst_ni) begin 
+       fg_seed_value <= '0;
+    end
+    else if(fg_en_seed_value) begin 
+        fg_seed_value <= PWDATA;
+    end
+end
+
+// decoding logic, there are 6 possible states
+/*
+
+*/
+
+always_comb begin 
+    fg_en_start_op = 0; 
+    fg_en_delay_cycles = 0;
+    fg_en_pulse_width = 0;  
+    fg_en_seed_value = 0; 
+    fg_en_read_address_fifo = 0;
+    fg_en_read_timer_fifo = 0;
+    
+    if((PSEL == 1'b1) && (PADDR[31:16] == 16'h1A12)) begin 
+        case (PADDR[4:2]) 
+            3'b000: fg_en_start_op = 1'b1;                  //write state
+            3'b001: fg_en_delay_cycles = 1'b1;              //write state
+            3'b010: fg_en_pulse_width = 1'b1;               //write state
+            3'b011: fg_en_seed_value = 1'b1;                //write state
+            3'b100: fg_en_read_address_fifo = 1'b1;         //read state
+            3'b101: fg_en_read_timer_fifo = 1'b1;           //read state    
+            
+        endcase
+    end
+end
+
+//ERROR MANAGEMENT !!! attention this is a place holder block, we havent use PSLAVEERR yet
+/*
+always_comb
+begin
+PSLAVEERR = 0;
+if ( ( (PENABLE == 1'b1) & (PSEL == 1'b1) ) & ( PADDR[11:0] > 12'h00F ) )
+   begin
+      PSLAVEERR = 1;
+   end
+end
+*/
+//PREADY (NOT YET IMPLEMENTED)
+//assign PREADY  = PENABLE
+
+
+
+// add logic for delay cycles and pulse width
+fg_m3_fsm_driver fg_fifo_config_fsm_driver(
+fg_fifo_config_clk_i, 
+fg_fifo_config_rst_ni, 
+fg_config_start_op,
+fg_delay_cycles,
+fg_pulse_width, 
+fg_fifo_config_driver_ports,
+fg_fifo_config_fsm_state,
+fg_fifo_config_ref_counter,
+fg_fifo_config_fault_address
+);
+
+
 fg_m3_fifo fg_fifo_config_address_fifo (
 fg_fifo_config_clk_i, 
 fg_fifo_config_rst_ni,
 fg_fifo_config_address_data_o,
 fg_fifo_config_address_valid_o,
-fg_fifo_config_ready_i,
-fg_fifo_config_valid_i,
+fg_fifo_config_address_ready_i,
+fg_fifo_config_address_valid_i,
 fg_fifo_config_address_data_i,
 fg_fifo_config_address_ready_o
 );
@@ -153,72 +319,11 @@ fg_fifo_config_clk_i,
 fg_fifo_config_rst_ni,
 fg_fifo_config_timing_data_o,
 fg_fifo_config_timing_valid_o,
-fg_fifo_config_ready_i,
-fg_fifo_config_valid_i,
+fg_fifo_config_timing_ready_i,
+fg_fifo_config_timing_valid_i,
 fg_fifo_config_timing_data_i,
 fg_fifo_config_timing_ready_o
 );
 
-/*
-
-//write logic // store the fault address and its timing into the fifo as it happens, (PULSE STATE = 2'b10
-always_ff @(posedge fg_fifo_config_clk_i) begin 
-    //check if it is pulse state and the both the fifos are not full
-    if(fg_fifo_config_fsm_state == 2'b10 && fg_fifo_config_address_ready_o == 1 && fg_fifo_config_timing_ready_o == 1) begin 
-        
-        //make sure  no same address is stored into the fifos (problem: when the pulse width is more than 1 clock cycle, it samples the same address twice: SOl:
-        if(fg_fifo_config_address_data_i == fg_fifo_config_fault_address && fg_fifo_config_timing_data_i == fg_fifo_config_ref_counter)begin 
-            fg_fifo_config_valid_i <= 0;
-        end
-        else begin 
-            
-            //if its not same, make valid_i high and start writing the address and counter time into the timer. 
-            fg_fifo_config_valid_i <= 1;
-            fg_fifo_config_address_data_i <= fg_fifo_config_fault_address;
-            fg_fifo_config_timing_data_i <= fg_fifo_config_ref_counter;
-        end
-        fg_fifo_config_ready_i <= 0;
-    end
-    else begin 
-        fg_fifo_config_address_data_i <= 0;
-        fg_fifo_config_timing_data_i <= 0;
-        fg_fifo_config_valid_i <= 0;
-        fg_fifo_config_ready_i <= 0;
-    end
-end
-*/
-
-logic [31:0] fg_delay_cycles;
-logic [31:0] fg_pulse_width;
-logic fg_fifo_config_start_op;
-logic fg_read_address_fifo;
-logic fg_read_timer_fifo;
-
-logic fg_en_delay_cycles, fg_en_pulse_width, fg_en_start_op, fg_en_read_address_fifo, fg_en_read_timer_fifo;
-/*
-fg_pulse_width <= '0;
-       fg_fifo_config_start_op <=0;
-       fg_read_address_fifo <= 0;
-       fg_read_timer_fifo <= 0;
-*/
-
-always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
-    if(~fg_fifo_config_rst_ni) begin 
-       fg_delay_cycles <= '0;
-    end
-    else if(fg_en_delay_cycles) begin 
-        fg_delay_cycles <= PWDATA;
-    end
-end
-
-
-always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
-    if(~fg_fifo_config_rst_ni) begin 
-       fg_pulse_width <= '0;
-    end
-    else if(fg_en_pulse_width) begin 
-        fg_pulse_width <= PWDATA;
-    end
-end
 
 endmodule
