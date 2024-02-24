@@ -116,7 +116,7 @@ output logic [COUNTER_WIDTH-1:0] fg_fsm_ref_counter
   end
  assign fg_fsm_output = current_state;
  
- always_comb begin  //block that controls reference counter which gives us the number of clock cycles after the fault injector has started
+ always_ff @(posedge fg_fsm_clk_i) begin  //block that controls reference counter which gives us the number of clock cycles after the fault injector has started
     if(fg_fsm_start_op) begin 
         fg_fsm_ref_count_clear_i = '0;
         fg_fsm_ref_count_hold_i =  '0;

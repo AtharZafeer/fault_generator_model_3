@@ -42,14 +42,14 @@ module fg_m3_fifo /* #(
     
     logic [LOG_BUFFER_DEPTH-1:0] read_ptr, write_ptr;
     logic [LOG_BUFFER_DEPTH:0] elements;
-    logic [BUFFER_DEPTH-1:0] [DATA_WIDTH-1:0]buffer;
+    logic [BUFFER_DEPTH-1:0] [DATA_WIDTH-1:0] buffer;
     
     always_ff @(posedge fg_fifo_clk_i or negedge fg_fifo_rst_ni) begin 
         if(!fg_fifo_rst_ni) begin 
             read_ptr <= 0;
             write_ptr <= 0;
             elements <=0;
-            fg_fifo_data_o <= 0;
+            fg_fifo_data_o <= '0;
             for(int i = 0; i < BUFFER_DEPTH; i++) buffer[i] = '0;
         end
         else begin 

@@ -18,82 +18,6 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-/*
-fg_m3_fifo #(.DATA_WIDTH(ADDRESS_WIDTH), // fifo to store address
-       .BUFFER_DEPTH(BUFFER_DEPTH)) 
-fsm_driver_address_fifo (fg_fsm_driver_clk_i, 
-fg_fsm_driver_rst_ni, 
-fsm_driver_data_o, 
-fsm_driver_valid_o, 
-fsm_driver_ready_i, 
-fsm_driver_valid_i, 
-fsm_driver_data_i, 
-fsm_driver_ready_o);
-
-fg_m3_fifo #(.DATA_WIDTH(COUNTER_WIDTH),  //32 bit size to store the counter
-       .BUFFER_DEPTH(BUFFER_DEPTH)) 
-fsm_driver_timing_fifo (fg_fsm_driver_clk_i, 
-fg_fsm_driver_rst_ni, 
-fsm_driver_timing_data_o, 
-fsm_driver_timing_valid_o, 
-fsm_driver_ready_i, 
-fsm_driver_valid_i, 
-fsm_driver_timing_data_i, 
-fsm_driver_timing_ready_o);
-
-
-reg [ADDRESS_WIDTH-1:0] temp;
-reg [COUNTER_WIDTH-1:0] temp_2;
-
-
-always_ff@ (posedge fg_fsm_driver_clk_i) begin 
-    if(fg_fsm_driver_state == 2'b10 && fsm_driver_ready_o == 1 && fsm_driver_timing_ready_o == 1 ) begin 
-       //fsm_driver_data_i = (fsm_driver_data_i == fsm_driver_data_i)?fg_driver_fault_address:;
-        if(fsm_driver_data_i == fg_driver_fault_address && fsm_driver_timing_data_i == fg_fsm_driver_ref_counter)  begin 
-           fsm_driver_valid_i = 0;
-        end
-        else begin 
-           fsm_driver_valid_i = 1;
-           fsm_driver_data_i =  fg_driver_fault_address;
-           fsm_driver_timing_data_i = fg_fsm_driver_ref_counter;
-        end 
-       fsm_driver_ready_i = 0;        
-    end
-    else begin 
-       fsm_driver_data_i = 0;
-       fsm_driver_valid_i = 0; 
-       fsm_driver_ready_i = 0;
-       fsm_driver_timing_data_i = 0;
-    end
-end
-
-assign temp = fsm_driver_data_o;
-assign temp_2 = fsm_driver_timing_data_o;
-
-//logic [COUNTER_WIDTH-1:0] fg_fsm_driver_ref_counter;
-
-//logic fsm_driver_valid_i, fsm_driver_ready_i;
-//logic fsm_driver_valid_o, fsm_driver_ready_o;
-
-//logic fsm_driver_timing_valid_o, fsm_driver_timing_ready_o; //signals from timing_counter_fifo
-
-//logic [ADDRESS_WIDTH-1:0] fsm_driver_data_i, fsm_driver_data_o; //data input and output of address_fifo
-
-//logic [COUNTER_WIDTH-1:0] fsm_driver_timing_data_i, fsm_driver_timing_data_o; //data input and output of timing_fifo
-
-
-input logic fg_fsm_driver_clk_i,
-input logic fg_fsm_driver_rst_ni,
-input logic fg_fsm_driver_start_op,
-
-output logic [N_PORTS-1:0] fg_fsm_driver_ports,
-
-output logic [1:0] fg_fsm_driver_state,  //output the state so we can control out fifo using this (data in to the fifo)
-
-output logic [COUNTER_WIDTH-1:0] fg_fsm_driver_ref_counter, //data to store into the fifo is outputed
-output logic [ADDRESS_WIDTH-1:0] fg_driver_fault_address
-
-*/
 
 `include "fg_params.svh"
 
@@ -146,7 +70,7 @@ logic fg_en_delay_cycles, fg_en_pulse_width, fg_en_start_op, fg_en_read_address_
 
 
 //this block stores the fault address and timer into their respective fifo registers
-always_comb begin 
+always_ff @(posedge fg_fifo_config_clk_i) begin 
     //check if it is pulse state and the both the fifos are not full
     if(fg_fifo_config_fsm_state == 2'b10 && fg_fifo_config_address_ready_o == 1 && fg_fifo_config_timing_ready_o == 1) begin 
         //make sure  no same address is stored into the fifos (problem: when the pulse width is more than 1 clock cycle, it samples the same address twice: SOl:
@@ -162,8 +86,8 @@ always_comb begin
         end
     end
     else begin 
-        fg_fifo_config_address_data_i <= 0;
-        fg_fifo_config_timing_data_i <= 0;
+        fg_fifo_config_address_data_i <= '0;
+        fg_fifo_config_timing_data_i <= '0;
         fg_fifo_config_address_valid_i <= 0;
         fg_fifo_config_timing_valid_i <= 0;
         
@@ -200,7 +124,7 @@ always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begi
        fg_pulse_width <= '0;
     end
     else if(fg_en_pulse_width && PWRITE &&  PENABLE) begin 
-        fg_pulse_width <= PWDATA[0];
+        fg_pulse_width <= (PWDATA)?PWDATA: DEFAULT_PULSE_WIDTH;
     end
 end
 
@@ -210,6 +134,7 @@ end
 always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
     if(~fg_fifo_config_rst_ni) begin 
        PRDATA <= '0;
+       fg_fifo_config_address_ready_i <= 0;
     end
     else begin 
         if(fg_en_read_address_fifo && !PWRITE &&  PENABLE) begin 
@@ -226,9 +151,10 @@ end
 always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begin 
     if(~fg_fifo_config_rst_ni) begin 
        PRDATA <= '0;
+       fg_fifo_config_timing_ready_i <= 0;
     end
     else begin 
-        if(fg_en_read_address_fifo && !PWRITE &&  PENABLE) begin 
+        if(fg_en_read_timer_fifo && !PWRITE &&  PENABLE) begin 
         //add timer fifo read logic here
             fg_fifo_config_timing_ready_i <= 1;
             PRDATA <= (fg_fifo_config_timing_data_o)? fg_fifo_config_timing_data_o: '0;
@@ -248,9 +174,7 @@ always_ff @ (posedge fg_fifo_config_clk_i or negedge fg_fifo_config_rst_ni )begi
 end
 
 // decoding logic, there are 6 possible states
-/*
 
-*/
 
 always_comb begin 
     fg_en_start_op = 0; 
@@ -261,7 +185,7 @@ always_comb begin
     fg_en_read_timer_fifo = 0;
     
     if((PSEL == 1'b1) && (PADDR[31:16] == 16'h1A12)) begin 
-        case (PADDR[4:2]) 
+        case (PADDR[3:0]) 
             3'b000: fg_en_start_op = 1'b1;                  //write state
             3'b001: fg_en_delay_cycles = 1'b1;              //write state
             3'b010: fg_en_pulse_width = 1'b1;               //write state
@@ -273,19 +197,21 @@ always_comb begin
     end
 end
 
-//ERROR MANAGEMENT !!! attention this is a place holder block, we havent use PSLAVEERR yet
-/*
+//ERROR MANAGEMENT 
+//this block makes the PSLAVEER = 1 if the address specified is higher than expected
 always_comb
 begin
 PSLAVEERR = 0;
-if ( ( (PENABLE == 1'b1) & (PSEL == 1'b1) ) & ( PADDR[11:0] > 12'h00F ) )
+if ( ( (PENABLE == 1'b1) & (PSEL == 1'b1) ) & ( PADDR[11:0] > 12'h0FF ) )
    begin
       PSLAVEERR = 1;
    end
+else PSLAVEERR = 0;   
 end
-*/
-//PREADY (NOT YET IMPLEMENTED)
-//assign PREADY  = PENABLE
+
+//PREADY if the fault injector is in pulse state, say not ready (because i haven't tested, but have a hunch that the seed value shouldn't written when lfsr is working in pulse state
+//it still works, but i am letting this be
+assign PREADY  = (fg_fifo_config_fsm_state == 2'b10)?0:PENABLE;
 
 
 
@@ -293,7 +219,7 @@ end
 fg_m3_fsm_driver fg_fifo_config_fsm_driver(
 fg_fifo_config_clk_i, 
 fg_fifo_config_rst_ni, 
-fg_config_start_op,
+fg_fifo_config_start_op,
 fg_delay_cycles,
 fg_pulse_width, 
 fg_fifo_config_driver_ports,

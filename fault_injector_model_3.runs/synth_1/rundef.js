@@ -28,7 +28,7 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 ISEStep( "vivado",
-         "-log fg_m3_fsm_driver.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_m3_fsm_driver.tcl" );
+         "-log fg_fifo_config.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_fifo_config.tcl" );
 
 
 

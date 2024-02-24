@@ -21,7 +21,7 @@
 */
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "fg_params.svh"
+//`include "fg_params.svh"
 
 module fg_m3_fsm_driver ( 
 input logic fg_fsm_driver_clk_i,

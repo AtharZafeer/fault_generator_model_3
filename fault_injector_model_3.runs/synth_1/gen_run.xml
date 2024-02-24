@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7vx485tffg1157-1" LaunchTime="1708621954" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/fg_m3_fifo.dcp">
-  <File Type="VDS-TIMING-PB" Name="fg_m3_fsm_driver_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="fg_m3_fsm_driver_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="fg_m3_fsm_driver.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="fg_m3_fsm_driver_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="fg_m3_fsm_driver_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="fg_m3_fsm_driver_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="fg_m3_fsm_driver.vds"/>
-  <File Type="REPORTS-TCL" Name="fg_m3_fsm_driver_reports.tcl"/>
-  <File Type="PA-TCL" Name="fg_m3_fsm_driver.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7vx485tffg1157-1" LaunchTime="1708799226" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/fg_m3_fifo.dcp">
+  <File Type="VDS-TIMING-PB" Name="fg_fifo_config_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="fg_fifo_config_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="fg_fifo_config.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="fg_fifo_config_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="fg_fifo_config_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="fg_fifo_config_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="fg_fifo_config.vds"/>
+  <File Type="REPORTS-TCL" Name="fg_fifo_config_reports.tcl"/>
+  <File Type="PA-TCL" Name="fg_fifo_config.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/fg_params.svh">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="IsVisible" Val="1"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/new/fg_m3_counter.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -39,13 +46,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/fg_m3_lfsr.sv">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/fg_m3_fsm_driver.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -53,9 +53,37 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/fg_m3_lfsr.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/fg_fifo_config.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/fg_apb_node_include.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/fg_apb_m3_wrap.sv">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="fg_m3_fsm_driver"/>
+      <Option Name="TopModule" Val="fg_fifo_config"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -79,7 +107,19 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023"/>
-    <Step Id="synth_design"/>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2023">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design">
+      <Option Id="FlattenHierarchy">1</Option>
+      <Option Id="FsmExtraction">2</Option>
+      <Option Id="GatedClockConversion">2</Option>
+      <Option Id="GlobalReTiming">1</Option>
+      <Option Id="IncrementalMode">0</Option>
+      <Option Id="KeepEquivalentRegisters">1</Option>
+      <Option Id="MaxClockBufferCount">24</Option>
+      <Option Id="ReTiming">1</Option>
+      <Option Id="ResourceSharing">2</Option>
+    </Step>
   </Strategy>
 </GenRun>
