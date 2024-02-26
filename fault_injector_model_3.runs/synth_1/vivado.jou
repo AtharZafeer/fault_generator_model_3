@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Sat Feb 24 18:27:11 2024
-# Process ID: 1316565
+# Start of session at: Mon Feb 26 02:38:13 2024
+# Process ID: 2631916
 # Current directory: /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1
 # Command line: vivado -log fg_fifo_config.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_fifo_config.tcl
 # Log file: /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1/fg_fifo_config.vds

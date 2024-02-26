@@ -39,7 +39,7 @@ module fg_apb_m3_wrap(
     
     APB_BUS.slave apb_slave,
     
-    output [N_PORTS-1:0] fg_output_driver
+    output logic [N_PORTS-1:0] fg_output_driver
 );
 
 fg_fifo_config fault_injector (

@@ -71,10 +71,6 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param simulator.questaInstallPath /cad/mentor/questasim_2019.4/questasim/bin
-set_param checkpoint.writeSynthRtdsInDcp 1
-set_msg_config -id {Common 17-41} -limit 10000000
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7vx485tffg1157-1
 
@@ -115,7 +111,7 @@ read_checkpoint -auto_incremental -incremental /home/azafeer/Desktop/test/fault_
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top fg_fifo_config -part xc7vx485tffg1157-1 -flatten_hierarchy none -gated_clock_conversion auto -bufg 24 -global_retiming on -fsm_extraction sequential -keep_equivalent_registers -resource_sharing off -incremental_mode aggressive
+synth_design -top fg_fifo_config -part xc7vx485tffg1157-1 -flatten_hierarchy none -gated_clock_conversion auto -bufg 24 -directive PowerOptimized_medium -global_retiming on -fsm_extraction sequential -keep_equivalent_registers -resource_sharing off
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"

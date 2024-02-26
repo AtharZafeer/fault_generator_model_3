@@ -72,10 +72,11 @@ pwrite = 1;
 PWDATA = '1;
 #100;
 pwrite = 0;
-PADDR = 32'h1A12_0004;  //read the address_fifo
-#30;
-for (int i = 0; i < 10 ; i++) begin 
-    #2 
+//read the address and timing fifo
+for (int i = 0; i < 50; i++) begin 
+    #4 
+    PADDR = 32'h1A12_0004;
+    #4
     PADDR = 32'h1A12_0005; //read the timing fifo
 end 
 
