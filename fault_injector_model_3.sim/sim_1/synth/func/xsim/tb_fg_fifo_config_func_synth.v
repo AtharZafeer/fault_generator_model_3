@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Mon Feb 26 02:40:20 2024
+// Date        : Mon Feb 26 03:58:59 2024
 // Host        : compute running 64-bit Ubuntu 22.04.1 LTS
 // Command     : write_verilog -mode funcsim -nolib -force -file
 //               /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.sim/sim_1/synth/func/xsim/tb_fg_fifo_config_func_synth.v

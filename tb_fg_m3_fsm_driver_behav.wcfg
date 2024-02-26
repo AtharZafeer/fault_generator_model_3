@@ -3,240 +3,158 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_fg_fifo_config_behav.wdb" id="1">
+      <db_ref path="tb_fg_apb_m3_wrap_behav.wdb" id="1">
          <top_modules>
-            <top_module name="\$unit_fg_m3_counter_sv_2145444643 " />
+            <top_module name="\$unit_fg_apb_node_include_sv_3494871240 " />
             <top_module name="glbl" />
-            <top_module name="tb_fg_fifo_config" />
+            <top_module name="tb_fg_apb_m3_wrap" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="459.079 ns"></ZoomStartTime>
-      <ZoomEndTime time="512.580 ns"></ZoomEndTime>
-      <Cursor1Time time="345.179 ns"></Cursor1Time>
+      <ZoomStartTime time="606.876 ns"></ZoomStartTime>
+      <ZoomEndTime time="660.877 ns"></ZoomEndTime>
+      <Cursor1Time time="636.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="326"></NameColumnWidth>
-      <ValueColumnWidth column_width="139"></ValueColumnWidth>
+      <ValueColumnWidth column_width="129"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="38" />
+   <WVObjectSize size="18" />
    <wave_markers>
       <marker label="" time="661193" />
       <marker label="" time="220130" />
       <marker label="" time="682000" />
+      <marker label="" time="970100" />
    </wave_markers>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/clk_i">
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/clk_i">
       <obj_property name="ElementShortName">clk_i</obj_property>
       <obj_property name="ObjectShortName">clk_i</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/rst_ni">
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/rst_ni">
       <obj_property name="ElementShortName">rst_ni</obj_property>
       <obj_property name="ObjectShortName">rst_ni</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/psel">
-      <obj_property name="ElementShortName">psel</obj_property>
-      <obj_property name="ObjectShortName">psel</obj_property>
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PSEL">
+      <obj_property name="ElementShortName">PSEL</obj_property>
+      <obj_property name="ObjectShortName">PSEL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/penable">
-      <obj_property name="ElementShortName">penable</obj_property>
-      <obj_property name="ObjectShortName">penable</obj_property>
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PENABLE">
+      <obj_property name="ElementShortName">PENABLE</obj_property>
+      <obj_property name="ObjectShortName">PENABLE</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/pwrite">
-      <obj_property name="ElementShortName">pwrite</obj_property>
-      <obj_property name="ObjectShortName">pwrite</obj_property>
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PWRITE">
+      <obj_property name="ElementShortName">PWRITE</obj_property>
+      <obj_property name="ObjectShortName">PWRITE</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/pready">
-      <obj_property name="ElementShortName">pready</obj_property>
-      <obj_property name="ObjectShortName">pready</obj_property>
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PREADY">
+      <obj_property name="ElementShortName">PREADY</obj_property>
+      <obj_property name="ObjectShortName">PREADY</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/pslaveerr">
-      <obj_property name="ElementShortName">pslaveerr</obj_property>
-      <obj_property name="ObjectShortName">pslaveerr</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/PADDR">
-      <obj_property name="ElementShortName">PADDR[31:0]</obj_property>
-      <obj_property name="ObjectShortName">PADDR[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/PWDATA">
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PWDATA">
       <obj_property name="ElementShortName">PWDATA[31:0]</obj_property>
       <obj_property name="ObjectShortName">PWDATA[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/PRDATA">
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PADDR">
+      <obj_property name="ElementShortName">PADDR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PADDR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PRDATA">
       <obj_property name="ElementShortName">PRDATA[31:0]</obj_property>
       <obj_property name="ObjectShortName">PRDATA[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/drivers">
-      <obj_property name="ElementShortName">drivers[255:0]</obj_property>
-      <obj_property name="ObjectShortName">drivers[255:0]</obj_property>
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/PSLAVEERR">
+      <obj_property name="ElementShortName">PSLAVEERR</obj_property>
+      <obj_property name="ObjectShortName">PSLAVEERR</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/fg_driver_ports">
-      <obj_property name="ElementShortName">fg_driver_ports[255:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_driver_ports[255:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fg_fsm_driver_state">
-      <obj_property name="ElementShortName">fg_fsm_driver_state[1:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_fsm_driver_state[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_start_op">
-      <obj_property name="ElementShortName">fg_fifo_config_start_op</obj_property>
-      <obj_property name="ObjectShortName">fg_fifo_config_start_op</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_delay_cycles">
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_delay_cycles">
       <obj_property name="ElementShortName">fg_delay_cycles[31:0]</obj_property>
       <obj_property name="ObjectShortName">fg_delay_cycles[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_pulse_width">
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_pulse_width">
       <obj_property name="ElementShortName">fg_pulse_width[31:0]</obj_property>
       <obj_property name="ObjectShortName">fg_pulse_width[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fault_address">
-      <obj_property name="ElementShortName">fg_fifo_config_fault_address[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_fifo_config_fault_address[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_start_op">
+      <obj_property name="ElementShortName">fg_fifo_config_start_op</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_config_start_op</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/address_generator/fg_lfsr_output">
-      <obj_property name="ElementShortName">fg_lfsr_output[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_lfsr_output[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_seed_value">
+      <obj_property name="ElementShortName">fg_seed_value[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fg_seed_value[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/fg_seed_lfsr_input">
-      <obj_property name="ElementShortName">fg_seed_lfsr_input[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_seed_lfsr_input[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_fsm_state">
+      <obj_property name="ElementShortName">fg_fifo_config_fsm_state[1:0]</obj_property>
+      <obj_property name="ObjectShortName">fg_fifo_config_fsm_state[1:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_ref_counter">
-      <obj_property name="ElementShortName">fg_fifo_config_ref_counter[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_fifo_config_ref_counter[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fg_output_driver">
+      <obj_property name="ElementShortName">fg_output_driver[255:0]</obj_property>
+      <obj_property name="ObjectShortName">fg_output_driver[255:0]</obj_property>
    </wvobject>
-   <wvobject type="group" fp_name="group8001">
-      <obj_property name="label">address  fifo</obj_property>
+   <wvobject type="group" fp_name="group4402">
+      <obj_property name="label">addressfifo</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_address_data_o">
+      <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_address_data_o">
          <obj_property name="ElementShortName">fg_fifo_config_address_data_o[31:0]</obj_property>
          <obj_property name="ObjectShortName">fg_fifo_config_address_data_o[31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_address_data_i">
+      <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_address_data_i">
          <obj_property name="ElementShortName">fg_fifo_config_address_data_i[31:0]</obj_property>
          <obj_property name="ObjectShortName">fg_fifo_config_address_data_i[31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_en_read_address_fifo">
-         <obj_property name="ElementShortName">fg_en_read_address_fifo</obj_property>
-         <obj_property name="ObjectShortName">fg_en_read_address_fifo</obj_property>
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_address_ready_o">
+         <obj_property name="ElementShortName">fg_fifo_config_address_ready_o</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_address_ready_o</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_address_fifo/fg_fifo_data_i">
-         <obj_property name="ElementShortName">fg_fifo_data_i[31:0]</obj_property>
-         <obj_property name="ObjectShortName">fg_fifo_data_i[31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_address_valid_o">
+         <obj_property name="ElementShortName">fg_fifo_config_address_valid_o</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_address_valid_o</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_address_fifo/fg_fifo_valid_i">
-         <obj_property name="ElementShortName">fg_fifo_valid_i</obj_property>
-         <obj_property name="ObjectShortName">fg_fifo_valid_i</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_address_ready_i">
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_address_ready_i">
          <obj_property name="ElementShortName">fg_fifo_config_address_ready_i</obj_property>
          <obj_property name="ObjectShortName">fg_fifo_config_address_ready_i</obj_property>
       </wvobject>
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_address_valid_i">
+         <obj_property name="ElementShortName">fg_fifo_config_address_valid_i</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_address_valid_i</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_fault_address">
+         <obj_property name="ElementShortName">fg_fifo_config_fault_address[31:0]</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_fault_address[31:0]</obj_property>
+      </wvobject>
    </wvobject>
-   <wvobject type="group" fp_name="group8000">
+   <wvobject type="group" fp_name="group4403">
       <obj_property name="label">timing fifo</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_timing_data_o">
+      <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_timing_data_o">
          <obj_property name="ElementShortName">fg_fifo_config_timing_data_o[31:0]</obj_property>
          <obj_property name="ObjectShortName">fg_fifo_config_timing_data_o[31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_en_read_timer_fifo">
-         <obj_property name="ElementShortName">fg_en_read_timer_fifo</obj_property>
-         <obj_property name="ObjectShortName">fg_en_read_timer_fifo</obj_property>
+      <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_timing_data_i">
+         <obj_property name="ElementShortName">fg_fifo_config_timing_data_i[31:0]</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_timing_data_i[31:0]</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_timing_fifo/fg_fifo_data_i">
-         <obj_property name="ElementShortName">fg_fifo_data_i[31:0]</obj_property>
-         <obj_property name="ObjectShortName">fg_fifo_data_i[31:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_timing_ready_o">
+         <obj_property name="ElementShortName">fg_fifo_config_timing_ready_o</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_timing_ready_o</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_address_fifo/fg_fifo_valid_i">
-         <obj_property name="ElementShortName">fg_fifo_valid_i</obj_property>
-         <obj_property name="ObjectShortName">fg_fifo_valid_i</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_timing_ready_i">
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_timing_ready_i">
          <obj_property name="ElementShortName">fg_fifo_config_timing_ready_i</obj_property>
          <obj_property name="ObjectShortName">fg_fifo_config_timing_ready_i</obj_property>
       </wvobject>
-   </wvobject>
-   <wvobject type="group" fp_name="group7999">
-      <obj_property name="label">en_signals</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_en_pulse_width">
-         <obj_property name="ElementShortName">fg_en_pulse_width</obj_property>
-         <obj_property name="ObjectShortName">fg_en_pulse_width</obj_property>
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_timing_valid_o">
+         <obj_property name="ElementShortName">fg_fifo_config_timing_valid_o</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_timing_valid_o</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_en_delay_cycles">
-         <obj_property name="ElementShortName">fg_en_delay_cycles</obj_property>
-         <obj_property name="ObjectShortName">fg_en_delay_cycles</obj_property>
+      <wvobject type="logic" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_timing_valid_i">
+         <obj_property name="ElementShortName">fg_fifo_config_timing_valid_i</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_timing_valid_i</obj_property>
       </wvobject>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_en_seed_value">
-      <obj_property name="ElementShortName">fg_en_seed_value</obj_property>
-      <obj_property name="ObjectShortName">fg_en_seed_value</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/address_generator/fg_lfsr_reg">
-      <obj_property name="ElementShortName">fg_lfsr_reg[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_lfsr_reg[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/address_generator/fg_start">
-      <obj_property name="ElementShortName">fg_start</obj_property>
-      <obj_property name="ObjectShortName">fg_start</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/address_generator/fg_en">
-      <obj_property name="ElementShortName">fg_en</obj_property>
-      <obj_property name="ObjectShortName">fg_en</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_temp_pulse_width">
-      <obj_property name="ElementShortName">fsm_driver_temp_pulse_width[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fsm_driver_temp_pulse_width[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_temp_seed_value">
-      <obj_property name="ElementShortName">fsm_driver_temp_seed_value[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fsm_driver_temp_seed_value[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_temp_delay_cycles">
-      <obj_property name="ElementShortName">fsm_driver_temp_delay_cycles[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fsm_driver_temp_delay_cycles[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/address_generator/fg_seed">
-      <obj_property name="ElementShortName">fg_seed[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_seed[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/fg_driver_lfsr_hold_address">
-      <obj_property name="ElementShortName">fg_driver_lfsr_hold_address[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_driver_lfsr_hold_address[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/fg_driver_fault_address">
-      <obj_property name="ElementShortName">fg_driver_fault_address[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_driver_fault_address[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_temp_delay_cycles">
-      <obj_property name="ElementShortName">fsm_driver_temp_delay_cycles[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fsm_driver_temp_delay_cycles[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_temp_pulse_width">
-      <obj_property name="ElementShortName">fsm_driver_temp_pulse_width[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fsm_driver_temp_pulse_width[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_temp_seed_value">
-      <obj_property name="ElementShortName">fsm_driver_temp_seed_value[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fsm_driver_temp_seed_value[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/fg_m3_driver_seed">
-      <obj_property name="ElementShortName">fg_m3_driver_seed[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_m3_driver_seed[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_fg_fifo_config/dut/fg_fifo_config_fsm_driver/fsm_driver_driver/fg_driver_lfsr_output">
-      <obj_property name="ElementShortName">fg_driver_lfsr_output[31:0]</obj_property>
-      <obj_property name="ObjectShortName">fg_driver_lfsr_output[31:0]</obj_property>
+      <wvobject type="array" fp_name="/tb_fg_apb_m3_wrap/dut/fault_injector/fg_fifo_config_ref_counter">
+         <obj_property name="ElementShortName">fg_fifo_config_ref_counter[31:0]</obj_property>
+         <obj_property name="ObjectShortName">fg_fifo_config_ref_counter[31:0]</obj_property>
+      </wvobject>
    </wvobject>
 </wave_config>

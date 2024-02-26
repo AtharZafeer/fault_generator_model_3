@@ -100,7 +100,7 @@ penable = 1;
 pwrite = 1;
 PWDATA = 31'h0000_0014; //20 cycles
 #4;
-PADDR = 32'h1A12_0002; //wrrite the pulse_width
+PADDR = 32'h1A12_0002; //write the pulse_width
 psel = 1;
 penable = 1;
 pwrite = 1;
@@ -117,12 +117,14 @@ psel = 1;
 penable = 1;
 pwrite = 1;
 PWDATA = 1;
-#200;
-pwrite = 0;
-PADDR = 32'h1A12_0004;  //read the address_fifo
-#50
-PADDR = 32'h1A12_0005; //read the timing fifo
-#100
+#400;
+for (int i = 0; i < 50; i++) begin 
+    #4 
+    PADDR = 32'h1A12_0004;
+    #4
+    PADDR = 32'h1A12_0005; //read the timing fifo
+end 
+
 PADDR = 32'h1A12_0000; //stop the fault injector
 //stop the operations and see what happens
 PWDATA = '0;

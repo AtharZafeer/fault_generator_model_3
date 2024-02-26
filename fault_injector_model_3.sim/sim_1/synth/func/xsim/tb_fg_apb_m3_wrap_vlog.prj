@@ -1,9 +1,10 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../../fault_injector_model_3.srcs/sources_1/new" \
-"tb_fg_fifo_config_func_synth.v" \
+"tb_fg_apb_m3_wrap_func_synth.v" \
 
 sv xil_defaultlib  --include "../../../../../fault_injector_model_3.srcs/sources_1/new" \
-"../../../../../fault_injector_model_3.srcs/sim_1/new/tb_fg_fifo_config.sv" \
+"../../../../../fault_injector_model_3.srcs/sources_1/new/fg_apb_node_include.sv" \
+"../../../../../fault_injector_model_3.srcs/sim_1/new/tb_fg_apb_m3_wrap.sv" \
 
 # Do not sort compile order
 nosort

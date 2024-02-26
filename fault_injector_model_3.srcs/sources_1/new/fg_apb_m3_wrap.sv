@@ -47,7 +47,7 @@ fg_fifo_config fault_injector (
   .fg_fifo_config_rst_ni (rst_ni),
   
   .PADDR(apb_slave.paddr),
-  .PSEL(apb_slave.pwrite),
+  .PSEL(apb_slave.psel),
   .PENABLE  ( apb_slave.penable ),
   .PWRITE   ( apb_slave.pwrite  ),
   .PWDATA   ( apb_slave.pwdata  ),

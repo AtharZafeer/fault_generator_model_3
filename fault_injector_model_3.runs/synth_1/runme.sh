@@ -37,4 +37,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log fg_fifo_config.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_fifo_config.tcl
+EAStep vivado -log fg_apb_m3_wrap.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source fg_apb_m3_wrap.tcl

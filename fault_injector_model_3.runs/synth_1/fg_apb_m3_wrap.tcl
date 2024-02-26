@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1/fg_fifo_config.tcl"
+  variable script "/home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.runs/synth_1/fg_apb_m3_wrap.tcl"
   variable category "vivado_synth"
 }
 
@@ -88,13 +88,15 @@ OPTRACE "Adding files" START { }
 read_verilog /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_params.svh
 set_property file_type "Verilog Header" [get_files /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_params.svh]
 read_verilog -library xil_defaultlib -sv {
+  /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_apb_node_include.sv
+  /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_fifo_config.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_counter.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_driver.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fifo.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_fsm_driver.sv
   /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_m3_lfsr.sv
-  /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_fifo_config.sv
+  /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/sources_1/new/fg_apb_m3_wrap.sv
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -111,7 +113,7 @@ read_checkpoint -auto_incremental -incremental /home/azafeer/Desktop/test/fault_
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top fg_fifo_config -part xc7vx485tffg1157-1 -flatten_hierarchy none -gated_clock_conversion auto -bufg 24 -directive PowerOptimized_medium -global_retiming on -fsm_extraction sequential -keep_equivalent_registers -resource_sharing off
+synth_design -top fg_apb_m3_wrap -part xc7vx485tffg1157-1 -flatten_hierarchy none -gated_clock_conversion auto -bufg 24 -directive PowerOptimized_medium -global_retiming on -fsm_extraction sequential -keep_equivalent_registers -resource_sharing off
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
@@ -121,10 +123,10 @@ if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef fg_fifo_config.dcp
+write_checkpoint -force -noxdef fg_apb_m3_wrap.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file fg_fifo_config_utilization_synth.rpt -pb fg_fifo_config_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file fg_apb_m3_wrap_utilization_synth.rpt -pb fg_apb_m3_wrap_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]
