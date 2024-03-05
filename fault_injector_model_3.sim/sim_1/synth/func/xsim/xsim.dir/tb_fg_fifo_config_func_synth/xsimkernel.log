@@ -2,3 +2,6 @@ Running: xsim.dir/tb_fg_fifo_config_func_synth/xsimk -simmode gui -wdb tb_fg_fif
 Design successfully loaded
 Design Loading Memory Usage: 54020 KB (Peak: 54020 KB)
 Design Loading CPU Usage: 340 ms
+Simulation completed
+Simulation Memory Usage: 135260 KB (Peak: 193288 KB)
+Simulation CPU Usage: 880 ms

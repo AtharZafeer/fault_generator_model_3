@@ -2,3 +2,6 @@ Running: xsim.dir/tb_fg_apb_m3_wrap_behav/xsimk -simmode gui -wdb tb_fg_apb_m3_w
 Design successfully loaded
 Design Loading Memory Usage: 23624 KB (Peak: 24184 KB)
 Design Loading CPU Usage: 170 ms
+Simulation completed
+Simulation Memory Usage: 105620 KB (Peak: 162892 KB)
+Simulation CPU Usage: 280 ms

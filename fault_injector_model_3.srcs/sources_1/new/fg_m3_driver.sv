@@ -100,7 +100,4 @@ always_ff @(posedge fg_driver_clk_i or negedge fg_driver_rst_ni) begin
 
         end
 end
-    
-    
-    
 endmodule

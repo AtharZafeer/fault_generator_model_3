@@ -107,6 +107,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/constrs_1/new/clock_const.xdc
+set_property used_in_implementation false [get_files /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/constrs_1/new/clock_const.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
 
 read_checkpoint -auto_incremental -incremental /home/azafeer/Desktop/test/fault_injector_model_3/fault_injector_model_3.srcs/utils_1/imports/synth_1/fg_m3_fifo.dcp
